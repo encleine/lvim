@@ -38,6 +38,7 @@ map("x", "qr\"", "c\"<C-r>\"\"<esc>")
 map("i", "<C-s>", "<esc>:w<enter>a")
 map("n", "<C-s>", ":w<enter>")
 
+
 map(
   'n',
   '<C-k>',

@@ -1,10 +1,34 @@
 lvim.plugins = {
-  { "nyoom-engineering/oxocarbon.nvim" },
+  { "nvim-lua/plenary.nvim" },
+  {
+    'nvim-telescope/telescope.nvim',
+    version = '0.1.2',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    "folke/lsp-colors.nvim",
+    event = "BufRead",
+  },
   {
     "tzachar/cmp-tabnine",
     build = "./install.sh",
     dependencies = "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function()
+      require "lsp_signature".on_attach()
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  {
+    "sindrets/diffview.nvim",
+    event = "BufRead",
   },
   {
     "tpope/vim-fugitive",
@@ -25,28 +49,9 @@ lvim.plugins = {
     },
     ft = { "fugitive" }
   },
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufRead",
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function()
-      require "lsp_signature".on_attach()
-    end,
-  },
-  {
-    "folke/persistence.nvim",
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    -- module = "persistence",
-    config = function()
-      require("persistence").setup {
-        dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
-        options = { "buffers", "curdir", "tabpages", "winsize" },
-      }
-    end,
-  },
+
+  { "nyoom-engineering/oxocarbon.nvim" },
+  { "tpope/vim-repeat" },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
@@ -63,33 +68,9 @@ lvim.plugins = {
       "MunifTanjim/nui.nvim",
     },
     config = function()
-      require("neo-tree").setup({
-        close_if_last_window = true,
-        window = {
-          width = 30,
-        },
-        buffers = {
-          follow_current_file = true,
-        },
-        filesystem = {
-          follow_current_file = true,
-          filtered_items = {
-            hide_dotfiles = false,
-            hide_gitignored = false,
-            hide_by_name = {
-              "node_modules"
-            },
-            never_show = {
-              ".DS_Store",
-              "thumbs.db"
-            },
-          },
-        },
-      })
+      require("neo-tree").setup(
+        require("user.configs").neo_tree
+      )
     end
-  },
-  {
-    "sindrets/diffview.nvim",
-    event = "BufRead",
   },
 }
