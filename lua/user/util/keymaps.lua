@@ -8,10 +8,10 @@ map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 -- lazy shortcuts
 map("n", "<C-f>", "zf%")
-map("x", "<C-c>", "<esc>")
+map("v", "<C-c>", "<esc>")
 -- insert newline
-map("n", "<C-n>", "o<esc>")
-map("n", "<C-S-n>", "O<esc>")
+map("n", "<M-n>", "o<esc>")
+map("n", "<M-S-n>", "O<esc>")
 -- duplicate current line
 map("n", "<C-d>", "yy P")
 -- delete strings
@@ -24,11 +24,10 @@ map("n", "pb", "vb\"0P")
 map("n", "pd", "dd\"0P")
 map("x", "<S-p>", "\"0P")
 -- fix for a problem I caused :p
-map("v", "p", "\"0P")
+map("n", "<S-p>", "\"0P")
 map("n", "pp", "p")
 -- yanks current file path
 map("n", "<C-g>y", ":let @* = expand(\"%:p\")<cr>")
--- delete white space
 -- wrapping
 map("x", "qr9", "c(<C-r>\")<esc>")
 map("x", "qr[", "c[<C-r>\"]<esc>")
@@ -37,7 +36,6 @@ map("x", "qr\"", "c\"<C-r>\"\"<esc>")
 -- save commad
 map("i", "<C-s>", "<esc>:w<enter>a")
 map("n", "<C-s>", ":w<enter>")
-
 
 map(
   'n',

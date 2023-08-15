@@ -1,2 +1,2 @@
-require("user.lsp.tabnine")
 require("user.lsp.signature")
+require("user.lsp.trouble")
